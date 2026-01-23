@@ -4,47 +4,54 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid vh-100 p-0">
+<div class="container-fluid vh-100 p-0 overflow-hidden">
     <div class="row g-0 h-100">
-        <div class="col-lg-4 d-flex align-items-center justify-content-center bg-white p-5">
-            <div class="w-100" style="max-width: 350px;">
-                <h2 class="brand-logo mb-5">ÉLÉGANCE</h2>
 
-                <form method="post">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center bg-white p-4 p-md-5">
+            <div class="login-wrapper w-100" style="max-width: 400px;">
+
+                <header class="text-center mb-5">
+                    <h2 class="brand-logo">ÉLÉGANCE</h2>
+                    <p class="text-muted small letter-spacing-1">WELCOME BACK. PLEASE LOG IN.</p>
+                </header>
+
+                <form method="post" class="mt-4">
                     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
-                    <div class="mb-3 input-group-custom">
-                        <span class="input-icon"><i class="bi bi-person"></i></span>
-                        <input type="text" asp-for="Users.Username" class="form-control-custom" placeholder="Username or e-mail" />
-                        <span class="text-danger d-block small" asp-validation-for="Users.Username"></span>
+                    <div class="form-group-lux mb-4">
+                        <label class="label-lux">Username or Email</label>
+                        <div class="input-container">
+                            <i class="bi bi-person"></i>
+                            <input type="text" asp-for="Users.Username" class="input-lux" />
+                        </div>
+                        <span class="text-danger small" asp-validation-for="Users.Username"></span>
                     </div>
 
-                    <div class="mb-4 input-group-custom">
-                        <span class="input-icon"><i class="bi bi-lock"></i></span>
-                        <input type="password" asp-for="Users.Password" class="form-control-custom" placeholder="Password" />
-                        <span class="text-danger d-block small" asp-validation-for="Users.Password"></span>
+                    <div class="form-group-lux mb-4">
+                        <label class="label-lux">Password</label>
+                        <div class="input-container">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" asp-for="Users.Password" class="input-lux"  />
+                        </div>
+                        <span class="text-danger small" asp-validation-for="Users.Password"></span>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <a href="#" class="text-muted small text-decoration-none">Forgot password?</a>
-                        <button type="submit" class="btn btn-login px-4">LOGIN</button>
-                    </div>
+                    <button type="submit" class="btn btn-lux-primary w-100">SUBMIT</button>
                 </form>
             </div>
         </div>
 
-        <div class="col-lg-8 d-none d-lg-block hero-section" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');">
-            <div class="hero-overlay d-flex align-items-center p-5">
-                <div class="text-white">
-                    <h1 class="display-3 fw-bold">Plan Your Trip</h1>
-                    <p class="lead">Lorem Ipsum Sit Dolores Omnia Vanitas</p>
-                    <div class="mt-4">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
+        <div class="col-lg-6 d-none d-lg-block hero-section" style="background-image: url('/images/loginbanner.jpg');">
+            <div class="hero-overlay d-flex flex-column justify-content-end p-5">
+                <div class="hero-content animate-up">
+                    <h1 class="display-3 fw-bold text-white mb-3">Choose your elegance.</h1>
+                    <p class="lead text-white-50 mw-75 mb-5">
+                        Experience the perfect blend of luxury and comfort. Our curated
+                        collection is designed to elevate your style for any occasion.
+                    </p>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
