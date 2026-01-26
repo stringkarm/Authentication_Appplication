@@ -17,9 +17,8 @@ namespace Authentication_Appplication.Pages
             {
                 return RedirectToPage("/Index");
             }
+           
             return Page();
-         
-
         }
     }
 }

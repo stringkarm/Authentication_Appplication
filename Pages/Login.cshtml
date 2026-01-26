@@ -27,16 +27,27 @@
                         <span class="text-danger small" asp-validation-for="Users.Username"></span>
                     </div>
 
-                    <div class="form-group-lux mb-4">
+                    <div class="form-group-lux mb-2">
                         <label class="label-lux">Password</label>
                         <div class="input-container">
                             <i class="bi bi-lock"></i>
-                            <input type="password" asp-for="Users.Password" class="input-lux"  />
+                            <input type="password" asp-for="Users.Password" class="input-lux" />
                         </div>
                         <span class="text-danger small" asp-validation-for="Users.Password"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-lux-primary w-100">SUBMIT</button>
+                    <div class="text-end mb-4">
+                        <a asp-page="/ForgotPassword" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-lux-primary w-100 mb-4">SUBMIT</button>
+
+                    <div class="text-center">
+                        <p class="text-muted small">
+                            DON'T HAVE AN ACCOUNT?
+                            <a asp-page="/Register" class="forgot-link ms-1">SIGN UP</a>
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
