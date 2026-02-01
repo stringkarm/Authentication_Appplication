@@ -1,10 +1,17 @@
 ﻿@page "/Index"
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "ÉLÉGANCE | Luxury Footwear";
 }
 
 <style>
+    :root {
+        --gold: #D4AF37;
+        --black: #000000;
+        --white: #ffffff;
+        --off-white: #fcfcfc;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -13,63 +20,39 @@
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background-color: #ffffff;
+        background-color: var(--white);
         overflow-x: hidden;
         padding-top: 130px;
     }
 
+    /* --- Navigation --- */
     header {
         background-color: white;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid #eee;
         padding: 20px 0;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .navbar-container {
         width: 100%;
-        padding: 0 20px;
+        padding: 0 40px;
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
     }
 
-    .navbar-left {
-        display: flex;
-        gap: 30px;
-    }
-
-    .navbar-right {
-        display: flex;
-        gap: 25px;
-        justify-content: flex-end;
-    }
-
-    .navbar-center {
-        text-align: center;
-    }
-
     .logo {
         text-decoration: none;
+        font-family: 'Playfair Display', serif;
         font-size: 32px;
-        font-weight: 300;
-        letter-spacing: 6px;
-        font-weight: 500;
-        color: #000;
+        letter-spacing: 8px;
+        font-weight: 700;
+        color: var(--black);
         text-transform: uppercase;
-    }
-
-    .nav-link {
-        text-decoration: none;
-        color: #1a1a1a;
-        font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        font-weight: 500;
     }
 
     .navbar-menu {
@@ -81,22 +64,44 @@
 
     .menu-link {
         text-decoration: none;
-        color: #1a1a1a;
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 1.5px;
+        color: var(--black);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
         text-transform: uppercase;
+        transition: color 0.3s;
     }
 
-    .nav-icon {
-        color: #1a1a1a;
-        display: flex;
-        align-items: center;
+        .menu-link:hover {
+            color: var(--gold);
+        }
+
+ 
+    .btn-lux {
+        display: inline-block;
+        background-color: var(--black);
+        color: var(--white);
+        text-decoration: none;
+        padding: 18px 50px;
+        border-radius: 0; 
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        border: 1px solid var(--black);
+        text-align: center;
     }
 
+        .btn-lux:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+    /* --- Hero Section --- */
     .hero-section {
-        background-color: #f2f2f2;
-        min-height: 85vh;
+        background-color: var(--off-white);
+        min-height: 80vh;
         display: flex;
         align-items: center;
         width: 100%;
@@ -104,134 +109,296 @@
 
     .hero-container {
         width: 100%;
-        padding: 0 20px; 
+        max-width: 1600px;
+        padding: 0 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
     }
 
-    .hero-content {
-        flex: 0 0 45%; 
-        z-index: 2;
-        text-align: left; 
-    }
-
     .hero-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(50px, 6vw, 100px);
-        font-weight: 800;
-        line-height: 1.05;
-        color: #1a1a1a;
+        font-size: clamp(40px, 5vw, 85px);
+        font-weight: 900;
+        line-height: 1.1;
+        color: var(--black);
         margin-bottom: 30px;
-        text-transform: uppercase;
     }
 
     .hero-description {
-        font-size: 20px;
-        color: #444;
-        font-weight: 500;
-        line-height: 1.6;
-        max-width: 450px;
+        font-size: 18px;
+        color: #555;
+        line-height: 1.8;
+        max-width: 480px;
         margin-bottom: 40px;
-        letter-spacing: 0.5px;
     }
 
-    .btn-shop {
-        display: inline-block;
-        background-color: #4a4543;
-        color: white;
-        text-decoration: none;
-        padding: 18px 45px;
-        border-radius: 50px;
-        font-size: 14px;
+    .hero-image img {
+        width: 100%;
+        max-width: 700px;
+        filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1));
+    }
+
+    /* --- Stats Bar (Gold & Black) --- */
+    .stats-bar {
+        background-color: var(--black);
+        color: var(--white);
+        padding: 80px 0;
+    }
+
+    .stat-value {
+        font-family: 'Playfair Display', serif;
+        font-size: 72px;
+        color: var(--gold);
         font-weight: 600;
-        letter-spacing: 1px;
-        transition: background 0.3s ease;
     }
 
-    .hero-image {
-        flex: 0 0 55%; 
-        display: flex;
-        justify-content: flex-end;
+    .stat-label {
+        color: var(--white);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 11px;
+        opacity: 0.7;
+    }
+
+    /* --- Best Sellers --- */
+    .best-sellers-section {
+        padding: 100px 0;
+        background-color: var(--white);
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        letter-spacing: 5px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .product-card {
+        background: #fcfcfc;
+        padding: 40px;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+        transition: 0.4s;
+    }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+    /* --- About Us (Cleaned & Elegant) --- */
+    .about-us-section {
+        background-color: #f9f9f9;
+        padding: 120px 0;
+        border-top: 1px solid #eee;
+    }
+
+    .about-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
+        gap: 80px;
+        padding: 0 40px;
     }
 
-        .hero-image img {
-            width: 80%;
-            height: auto;
-            object-fit: contain;
-            transform: translateX(10%); 
-        }
-
-    @@media (max-width: 992px) {
-        .navbar-left {
-            display: none;
-        }
-
-        .navbar-menu {
-            gap: 20px;
-        }
-
-        .hero-container {
-            flex-direction: column;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .hero-content {
-            flex: 0 0 100%;
-            text-align: center;
-            padding-right: 0;
-            margin-bottom: 40px;
-        }
-
-        .hero-description {
-            margin: 0 auto 30px;
-        }
-
-        .hero-image {
-            flex: 0 0 100%;
-        }
-
-            .hero-image img {
-                width: 100%;
-                transform: none;
-            }
+    .about-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 45px;
+        margin-bottom: 30px;
+        position: relative;
     }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+    .contact-area-section {
+        padding: 120px 0;
+        background-color: var(--black);
+        color: var(--white);
+        text-align: center;
+    }
+
+    .contact-text-content {
+        max-width: 800px;
+        margin: 0 auto 50px;
+    }
+
+        .contact-text-content h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+    .btn-contact-lux {
+        background-color: var(--white);
+        color: var(--black);
+        border: 1px solid var(--white);
+    }
+
+        .btn-contact-lux:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+    .flipped-image {
+        transform: scaleX(-1);
+    }
+
+    .main-site-footer {
+        background-color: var(--white);
+        padding: 100px 0 40px;
+        border-top: 1px solid #eee;
+    }
+
+    .footer-grid-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+        gap: 60px;
+        padding: 0 40px;
+    }
+
+    .footer-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        letter-spacing: 6px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    .footer-about-text {
+        font-size: 13px;
+        color: #777;
+        line-height: 1.8;
+        margin-bottom: 25px;
+    }
+
+    .footer-header {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+        color: var(--black);
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 15px;
+    }
+
+    .footer-links li a {
+        text-decoration: none;
+        color: #666;
+        font-size: 13px;
+        transition: color 0.3s;
+    }
+
+    .footer-links li a:hover {
+        color: var(--gold);
+    }
+
+    .footer-socials {
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-socials a {
+        text-decoration: none;
+        color: var(--black);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .newsletter-sub {
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 20px;
+    }
+
+    .footer-newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-input {
+        padding: 15px;
+        border: 1px solid #ddd;
+        font-size: 12px;
+        letter-spacing: 1px;
+        outline: none;
+    }
+
+    .footer-input:focus {
+        border-color: var(--gold);
+    }
+
+    .footer-btn {
+        width: 100%;
+        padding: 15px !important; 
+    }
+
+    .footer-bottom {
+        margin-top: 80px;
+        padding-top: 30px;
+        border-top: 1px solid #f5f5f5;
+    }
+
+    .footer-legal {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: #999;
+        letter-spacing: 1px;
+    }
+
 </style>
 
 <header>
     <div class="navbar-container">
         <div class="navbar-left">
-            <a href="#" class="nav-link">US EN</a>
-            <a href="#" class="nav-link">CONTACT US</a>
+            <a href="#" class="nav-link" style="text-decoration:none; color:black; font-size:12px; letter-spacing:1px;">EN | US</a>
         </div>
 
         <div class="navbar-center">
             <a asp-page="/Index" class="logo">ÉLÉGANCE</a>
         </div>
 
-        <div class="navbar-right">
-            <a href="#" class="nav-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-            </a>
-            <a href="#" class="nav-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-            </a>
-            <a href="#" class="nav-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-            </a>
+        <div class="navbar-right" style="display:flex; gap:20px; justify-content:flex-end;">
+            <span style="font-size:12px; letter-spacing:1px; cursor:pointer;">SEARCH</span>
+            <span style="font-size:12px; letter-spacing:1px; cursor:pointer;">CART (0)</span>
         </div>
     </div>
 
@@ -244,16 +411,15 @@
     </nav>
 </header>
 
-<!--Hero Section ni Diri-->
 <section class="hero-section">
     <div class="hero-container">
         <div class="hero-content">
-            <h1 class="hero-title">FIND YOUR<br>BEST SHOES<br>FOR YOU!</h1>
+            <h1 class="hero-title">FIND YOUR<br><span style="color:var(--gold)">BEST SHOES</span><br>FOR YOU!</h1>
             <p class="hero-description">
                 Experience the perfect blend of luxury and comfort. Our curated
                 collection is designed to elevate your style for any occasion.
             </p>
-            <a href="#" class="btn-shop">SHOP NOW</a>
+            <a href="#" class="btn-lux">SHOP COLLECTION</a>
         </div>
 
         <div class="hero-image">
@@ -262,165 +428,128 @@
     </div>
 </section>
 
-<!--Second Section ni Diri-->
 <section class="stats-bar">
-    <div class="content-wrapper">
-        <div class="stats-text-left" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI';">
-            Trusted by over +40,000,000 buyers across the world.<br />
-            And worldwide since the year 2025.
+    <div class="content-wrapper" style="max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0 40px;">
+        <div class="stats-text-left" style="font-size: 22px; max-width:500px; line-height:1.4;">
+            Trusted by over <span style="color:var(--gold)">+40,000,000</span> buyers worldwide.<br />
+            Defining excellence since 2025.
         </div>
 
-        <div class="stats-numbers-right">
+        <div class="stats-numbers-right" style="display:flex; gap:100px;">
             <div class="stat-box">
                 <span class="stat-value">5m</span>
-                <span class="stat-label">worldwide sales per year</span>
+                <span class="stat-label">Annual Sales</span>
             </div>
             <div class="stat-box">
-                <span class="stat-value">4.5</span>
-                <span class="stat-label">ratings</span>
+                <span class="stat-value">4.8</span>
+                <span class="stat-label">Client Rating</span>
             </div>
         </div>
     </div>
 </section>
 
-<!--Third section ni diri-->
 <section class="best-sellers-section">
-    <div class="section-container">
-        <div class="section-header">
-            <span class="header-line"></span>
-            <h2 class="section-title">BEST SELLERS</h2>
-            <span class="header-line"></span>
+    <h2 class="section-title">BEST SELLERS</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/blueheels.png" style="width:100%; margin-bottom:20px;" />
+            <p style="font-weight:700; letter-spacing:1px; font-size:13px;">MIDNIGHT VELVET</p>
         </div>
-
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image-bg">
-                    <img src="images/blueheels.png" alt="Midnight Blue Velvet Heels" />
-                </div>
-                <div class="product-info">
-                    <p class="product-desc">Midnight Blue Velvet Stiletto with Delicate Ankle Strap</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-bg">
-                    <img src="images/blackheelverthree.png" alt="Classic Noir Platform Heels" />
-                </div>
-                <div class="product-info">
-                    <p class="product-desc">Classic Noir Suede Platform Heels for Timeless Sophistication</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-bg">
-                    <img src="images/blackheelvertwo.png" alt="Luxury Patent Leather Pumps" />
-                </div>
-                <div class="product-info">
-                    <p class="product-desc">Sleek Patent Leather Pointed-Toe Pumps in Deep Onyx</p>
-                </div>
-            </div>
+        <div class="product-card">
+            <img src="images/blackheelverthree.png" style="width:100%; margin-bottom:20px;" />
+            <p style="font-weight:700; letter-spacing:1px; font-size:13px;">NOIR PLATFORM</p>
         </div>
-
-        <div class="text-center mt-5">
-            <a href="#" class="btn-explore">Explore More</a>
+        <div class="product-card">
+            <img src="images/blackheelvertwo.png" style="width:100%; margin-bottom:20px;" />
+            <p style="font-weight:700; letter-spacing:1px; font-size:13px;">PATENT PUMP</p>
         </div>
+    </div>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#" class="btn-lux">EXPLORE ALL</a>
     </div>
 </section>
 
-<!--About us ning sectiona-->
 <section class="about-us-section">
     <div class="about-container">
         <div class="about-content">
-            <h2 class="about-title">ABOUT US</h2>
-            <p class="about-description">
+            <h2 class="about-title">OUR STORY</h2>
+            <p class="hero-description">
                 At ÉLÉGANCE, we believe that the right pair of shoes does more than just complete
                 an outfit—it empowers the wearer. Founded on the principles of timeless design
-                and uncompromising quality, our curated collection is crafted for those who
-                demand both luxury and comfort in every step.
+                and uncompromising quality.
                 <br /><br />
                 Each piece in our collection is a testament to meticulous craftsmanship,
                 utilizing only the finest materials to ensure a perfect blend of style and
-                durability. Whether you are stepping into a boardroom or onto a red carpet,
-                ÉLÉGANCE provides the sophisticated foundation your lifestyle deserves.
-                Experience the heritage of fine footwear, reimagined for the modern world.
+                durability.
             </p>
+            <a href="#" style="color:var(--gold); font-weight:700; letter-spacing:2px; text-decoration:none;">LEARN MORE →</a>
         </div>
-
         <div class="about-image">
-            <img src="images/blackheelverthree.png" alt="About Us Luxury Heels" class="flipped-image" />
+            <img src="images/blackheelverthree.png" alt="About Us" class="flipped-image" style="width:100%;" />
         </div>
     </div>
 </section>
 
-<!--Contact ni diri nga sectiona-->
 <section class="contact-area-section">
-    <div class="section-container">
-        <div class="contact-text-content">
-            <p>
-                Have a question about our collections or need assistance finding your perfect fit?
-                Our dedicated concierge team is here to provide you with a seamless and
-                personalized shopping experience. Whether you require styling advice or have
-                inquiries regarding your order, we invite you to reach out to us.
-            </p>
-            <p>
-                At ÉLÉGANCE, we are committed to excellence in service, ensuring that every
-                interaction is as refined as our footwear. Connect with us today and let us
-                help you step into a world of timeless luxury.
-            </p>
-        </div>
-        <div class="contact-button-wrapper">
-            <a href="mailto:support@elegance.com" class="btn-contact">Contact Us</a>
-        </div>
+    <div class="contact-text-content">
+        <h2>CONTACT US</h2>
+        <p style="font-size:18px; opacity:0.8; line-height:1.8; color:white;">
+            Have a question about our collections or need assistance finding your perfect fit?
+            Our dedicated team is here to provide you with a personalized shopping experience.
+        </p>
+        <a href="mailto:support@elegance.com" class="btn-lux btn-contact-lux">CONTACT US</a>
     </div>
 </section>
 
-<!--Footer ni diri-->
 <footer class="main-site-footer">
-    <div class="footer-top-grid">
-        <div class="footer-col brand-col">
+    <div class="footer-grid-container">
+
+        <div class="footer-column brand-info">
             <h2 class="footer-logo">ÉLÉGANCE</h2>
-            <p class="footer-tagline">Elevating your style with the perfect blend of luxury and comfort since 2025.</p>
-            <div class="footer-social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
+            <p class="footer-about-text">
+                Defining the pinnacle of luxury footwear. We combine artisanal craftsmanship with modern elegance to empower every step you take.
+            </p>
+            <div class="footer-socials">
+                <a href="#">FB</a>
+                <a href="#">IG</a>
+                <a href="#">PIN</a>
+                <a href="#">TK</a>
             </div>
         </div>
 
-        <div class="footer-col">
-            <h3>SHOP</h3>
-            <ul>
+        <div class="footer-column">
+            <h3 class="footer-header">Collections</h3>
+            <ul class="footer-links">
+                <li><a href="#">The Stiletto Series</a></li>
+                <li><a href="#">Bridal Edition</a></li>
+                <li><a href="#">Evening Noir</a></li>
                 <li><a href="#">New Arrivals</a></li>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Sale</a></li>
-                <li><a href="#">Collections</a></li>
             </ul>
         </div>
 
-        <div class="footer-col">
-            <h3>SUPPORT</h3>
-            <ul>
+        <div class="footer-column">
+            <h3 class="footer-header">Concierge</h3>
+            <ul class="footer-links">
+                <li><a href="#">Size Guide</a></li>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Store Locator</a></li>
                 <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Shipping Policy</a></li>
-                <li><a href="#">Returns & Exchanges</a></li>
-                <li><a href="#">FAQs</a></li>
             </ul>
         </div>
 
-        <div class="footer-col newsletter-col">
-            <h3>JOIN THE CLUB</h3>
-            <p>Subscribe to receive updates and 10% off your first order.</p>
-            <div class="newsletter-form">
-                <input type="email" placeholder="Email Address">
-                <button type="submit">JOIN</button>
-            </div>
+        <div class="footer-column newsletter-column">
+            <h3 class="footer-header">Join the Club</h3>
+            <p class="newsletter-sub">Receive early access to new drops and 10% off your first order.</p>
+            <form class="footer-newsletter-form">
+                <input type="email" placeholder="EMAIL ADDRESS" class="footer-input">
+                <button type="submit" class="btn-lux footer-btn">JOIN</button>
+            </form>
         </div>
     </div>
 
-    <div class="footer-bottom-bar">
-        <div class="footer-container-legal">
-            <p>&copy; 2026 ÉLÉGANCE. All Rights Reserved.</p>
+    <div class="footer-bottom">
+        <div class="footer-legal">
+            <p>&copy; 2026 ÉLÉGANCE LUXURY FOOTWEAR. ALL RIGHTS RESERVED.</p>
             <div class="legal-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
