@@ -20,12 +20,7 @@ namespace Authentication_Appplication.Model
         [Range(0.01, 5000.00)]
         public decimal Price { get; set; }
 
-        [Required]
-        [Display(Name = "In Stock")]
         public int StockQuantity { get; set; }
-
-        [ForeignKey("Heel")]
-        public int HeelId { get; set; }
 
     }
 }
