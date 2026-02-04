@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "ÉLÉGANCE | Luxury Footwear";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -24,78 +25,6 @@
         overflow-x: hidden;
         padding-top: 130px;
     }
-
-    header {
-        background-color: white;
-        border-bottom: 1px solid #eee;
-        padding: 20px 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-
-    .navbar-container {
-        width: 100%;
-        padding: 0 40px;
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-    }
-
-    .logo {
-        text-decoration: none;
-        font-family: 'Playfair Display', serif;
-        font-size: 32px;
-        letter-spacing: 8px;
-        font-weight: 700;
-        color: var(--black);
-        text-transform: uppercase;
-    }
-
-    .navbar-menu {
-        display: flex;
-        justify-content: center;
-        gap: 60px;
-        margin-top: 30px;
-    }
-
-    .menu-link {
-        text-decoration: none;
-        color: var(--black);
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        transition: color 0.3s;
-    }
-
-        .menu-link:hover {
-            color: var(--gold);
-        }
-
- 
-    .btn-lux {
-        display: inline-block;
-        background-color: var(--black);
-        color: var(--white);
-        text-decoration: none;
-        padding: 18px 50px;
-        border-radius: 0; 
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        border: 1px solid var(--black);
-        text-align: center;
-    }
-
-        .btn-lux:hover {
-            background-color: var(--white);
-            color: var(--black);
-        }
 
     /* --- Hero Section --- */
     .hero-section {
@@ -230,34 +159,73 @@
             background: var(--gold);
         }
 
+
+    /*--Contact Us--*/
     .contact-area-section {
-        padding: 120px 0;
-        background-color: var(--black);
-        color: var(--white);
-        text-align: center;
+        padding: 100px 0;
+        background-color: var(--black); 
+        width: 100%;
     }
 
     .contact-text-content {
-        max-width: 800px;
-        margin: 0 auto 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px; 
+        text-align: center;
     }
 
         .contact-text-content h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--gold);
+            color: var(--gold) !important;
             font-size: 40px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
-    .btn-contact-lux {
-        background-color: var(--white);
+    .contact-paragraph {
+        max-width: 800px;
+        margin: 0 auto 40px;
+    }
+
+        .contact-paragraph p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--white) !important;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+    .btn-lux {
+        display: inline-block;
+        padding: 15px 40px;
+        background-color: var(--black);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        border: 1px solid var(--black);
+        cursor: pointer;
+    }
+
+    .btn-lux:hover {
+        background-color: var(--gold);
+        border-color: var(--gold);
         color: var(--black);
-        border: 1px solid var(--white);
+    }
+
+    .btn-contact-lux {
+        background-color: var(--white) !important;
+        color: var(--black) !important;
+        border: 1px solid var(--white) !important;
     }
 
         .btn-contact-lux:hover {
-            background-color: transparent;
-            color: var(--white);
+            background-color: transparent !important;
+            color: var(--white) !important;
         }
 
     .flipped-image {
@@ -384,31 +352,6 @@
 
 </style>
 
-<header>
-    <div class="navbar-container">
-        <div class="navbar-left">
-            <a href="#" class="nav-link" style="text-decoration:none; color:black; font-size:12px; letter-spacing:1px;">EN | US</a>
-        </div>
-
-        <div class="navbar-center">
-            <a asp-page="/Index" class="logo">ÉLÉGANCE</a>
-        </div>
-
-        <div class="navbar-right" style="display:flex; gap:20px; justify-content:flex-end;">
-            <span style="font-size:12px; letter-spacing:1px; cursor:pointer;">SEARCH</span>
-            <span style="font-size:12px; letter-spacing:1px; cursor:pointer;">CART (0)</span>
-        </div>
-    </div>
-
-    <nav class="navbar-menu">
-        <a asp-page="/Index" class="menu-link">Home</a>
-        <a asp-page="/About" class="menu-link">About</a>
-        <a asp-page="/Services" class="menu-link">Services</a>
-        <a asp-page="/Products" class="menu-link">Products</a>
-        <a asp-page="/More" class="menu-link">More</a>
-    </nav>
-</header>
-
 <section class="hero-section">
     <div class="hero-container">
         <div class="hero-content">
@@ -491,10 +434,16 @@
 <section class="contact-area-section">
     <div class="contact-text-content">
         <h2>CONTACT US</h2>
-        <p style="font-size:18px; opacity:0.8; line-height:1.8; color:white;">
-            Have a question about our collections or need assistance finding your perfect fit?
-            Our dedicated team is here to provide you with a personalized shopping experience.
-        </p>
+
+        <div class="contact-paragraph">
+            <p>
+                At ÉLÉGANCE, our commitment to your journey extends far beyond the craft of footwear. We believe that true luxury is defined by the quality of the experience, and our dedicated concierge team is here to ensure that every interaction is as seamless as our design.
+            </p>
+            <p>
+                Reach out to our specialists today for a personalized consultation. We strive to respond to all inquiries with the same meticulous attention to detail that we apply to our stitching.
+            </p>
+        </div>
+
         <a href="mailto:support@elegance.com" class="btn-lux btn-contact-lux">CONTACT US</a>
     </div>
 </section>

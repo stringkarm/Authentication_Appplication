@@ -1,8 +1,57 @@
 ﻿@page "/"
 @model Authentication_Appplication.Pages.LoginModel
 @{
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ÉLÉGANCE | Login";
 }
+
+<style>
+    .input-lux {
+        width: 100%;
+        padding: 12px 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 0; 
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+        .input-lux:focus {
+            border-color: #000;
+        }
+
+    .label-lux {
+        display: block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .btn-lux-primary {
+        background-color: #000;
+        color: #fff;
+        border: none;
+        padding: 15px;
+        letter-spacing: 2px;
+        transition: opacity 0.3s;
+    }
+
+        .btn-lux-primary:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+    .hero-section {
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .hero-overlay {
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        height: 100%;
+    }
+</style>
 
 <div class="container-fluid vh-100 p-0 overflow-hidden">
     <div class="row g-0 h-100">
@@ -22,7 +71,7 @@
                         <label class="label-lux">Username or Email</label>
                         <div class="input-container">
                             <i class="bi bi-person"></i>
-                            <input type="text" asp-for="Users.Username" class="input-lux" />
+                            <input type="text" asp-for="Users.Username" class="input-lux" placeholder="e.g. alex@example.com" />
                         </div>
                         <span class="text-danger small" asp-validation-for="Users.Username"></span>
                     </div>
@@ -31,7 +80,7 @@
                         <label class="label-lux">Password</label>
                         <div class="input-container">
                             <i class="bi bi-lock"></i>
-                            <input type="password" asp-for="Users.Password" class="input-lux" />
+                            <input type="password" asp-for="Users.Password" class="input-lux" placeholder="Enter your password" />
                         </div>
                         <span class="text-danger small" asp-validation-for="Users.Password"></span>
                     </div>
