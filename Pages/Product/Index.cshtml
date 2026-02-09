@@ -154,11 +154,11 @@
         <table class="table-lux-vault">
             <thead>
                 <tr>
-                    <th>SHADE</th>
+                    <th>COLOR</th>
                     <th>SIZE</th>
-                    <th>RETAIL PRICE</th>
-                    <th>AVAILABILITY</th>
-                    <th style="text-align:right;">MANAGEMENT</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th style="text-align:right;">MODIFY</th>
                 </tr>
             </thead>
             <tbody>
@@ -174,7 +174,7 @@
                         <td class="actions-group">
                             <a asp-page="./Edit" asp-route-id="@item.VariantId" class="action-btn">Edit</a>
                             <a asp-page="./Details" asp-route-id="@item.VariantId" class="action-btn">View</a>
-                            <a asp-page="./Delete" asp-route-id="@item.VariantId" class="action-btn action-delete">Archive</a>
+                            <a asp-page="./Delete" asp-route-id="@item.VariantId" class="action-btn action-delete">Delete</a>
                         </td>
                     </tr>
                 }

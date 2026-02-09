@@ -2,46 +2,169 @@
 @model Authentication_Appplication.Pages.Product.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Product Details | ÉLÉGANCE";
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
+<style>
+    .details-wrapper {
+        padding: 80px 60px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
 
-    <h1>Details</h1>
+    .details-card {
+        background: white;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+    }
 
-    <div>
-        <h4>HeelInfo</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.Color)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.Color)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.Size)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.Size)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.Price)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.Price)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.StockQuantity)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.StockQuantity)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-page="./Edit" asp-route-id="@Model.HeelInfo.VariantId">Edit</a> |
-        <a asp-page="./Index">Back to List</a>
+    /*Title*/
+    .details-label-side {
+        background-color: #000;
+        color: #fff;
+        padding: 60px;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .details-label-side h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+    .brand-tag {
+        font-size: 10px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+    }
+
+    .details-content-side {
+        padding: 60px;
+        width: 65%;
+        background: #fff;
+    }
+
+    .spec-item {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 15px;
+    }
+
+    .spec-label {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .spec-value {
+        font-size: 18px;
+        color: #000;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .spec-price {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #c9a050;
+    }
+
+    .details-actions {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .btn-edit-lux {
+        background-color: #000;
+        color: #fff;
+        padding: 18px 40px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+        .btn-edit-lux:hover {
+            background-color: #c9a050;
+            color: #fff;
+        }
+
+    .back-nav {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #888;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+        .back-nav:hover {
+            color: #000;
+        }
+</style>
+
+<div class="details-wrapper">
+    <div class="details-card">
+        <div class="details-label-side">
+            <div>
+                <span class="brand-tag">ÉLÉGANCE</span>
+                <h2>Product<br />Registered</h2>
+            </div>
+            <p style="font-size: 10px; opacity: 0.6; line-height: 2;">
+                Authentic Craftsmanship<br />
+                Batch No. @Model.HeelInfo.VariantId
+            </p>
+        </div>
+
+        <div class="details-content-side">
+            <div class="spec-item">
+                <span class="spec-label">COLOR</span>
+                <span class="spec-value">@Html.DisplayFor(model => model.HeelInfo.Color)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label">SIZE</span>
+                <span class="spec-value">@Html.DisplayFor(model => model.HeelInfo.Size)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label"><picture>
+              <source media="(min-width: 465px)" srcset="css/images/file.png" />
+              <source media="(min-width: 650px)" srcset="css/images/file.png" />
+              <img src="css/images/file.png" alt="" />
+            </picture></span>
+                <span class="spec-price">@Html.DisplayFor(model => model.HeelInfo.Price)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label">QUANTITY</span>
+                <span class="spec-value">@Html.DisplayFor(model => model.HeelInfo.StockQuantity)Unit/s</span>
+            </div>
+
+            <div class="details-actions">
+                <a asp-page="./Edit" asp-route-id="@Model.HeelInfo.VariantId" class="btn-edit-lux">Update Item</a>
+                <a asp-page="./Index" class="back-nav">Back to Inventory</a>
+            </div>
+        </div>
     </div>
 </div>

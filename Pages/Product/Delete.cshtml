@@ -2,48 +2,159 @@
 @model Authentication_Appplication.Pages.Product.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Remove Variant | ÉLÉGANCE";
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-    <h1>Delete</h1>
+<style>
+    .delete-wrapper {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>HeelInfo</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.Color)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.Color)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.Size)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.Size)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.Price)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.Price)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.HeelInfo.StockQuantity)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.HeelInfo.StockQuantity)
-            </dd>
-        </dl>
-    
+    /* Header*/
+    .delete-header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+        .delete-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+    .warning-text {
+        color: #d9534f;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 15px; 
+        display: block;
+        text-align: center;
+    }
+
+    .delete-card {
+        background: white;
+        width: 100%;
+        max-width: 600px;
+        padding: 60px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+        text-align: center;
+    }
+
+        .delete-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .delete-card p {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+    .item-preview {
+        background-color: #fafafa;
+        padding: 30px;
+        margin-bottom: 40px;
+        border: 1px dashed #ddd;
+    }
+
+    .preview-label {
+        font-size: 10px;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .preview-value {
+        font-family: 'Playfair Display', serif;
+        font-size: 22px;
+        color: #000;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+        .preview-value:last-child {
+            margin-bottom: 0;
+        }
+
+    .btn-delete-lux {
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        padding: 20px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 25px;
+    }
+
+        .btn-delete-lux:hover {
+            background-color: #d9534f;
+            transform: translateY(-2px);
+        }
+
+    .cancel-link {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: inline-block;
+    }
+
+        .cancel-link:hover {
+            color: #000;
+        }
+</style>
+
+<div class="delete-wrapper">
+    <div class="delete-header">
+        <h1>Remove <span style="color:#c9a050">Heel Variant</span></h1>
+        <span class="warning-text">Permanent Action Required</span>
+    </div>
+
+    <div class="delete-card">
+        <h3>Are you sure you want to delete this item?</h3>
+        <p>Once deleted, this specific heel will no longer be available in the public store or inventory.</p>
+
+        <div class="item-preview">
+            <span class="preview-label">Shade & Style</span>
+            <span class="preview-value">@Html.DisplayFor(model => model.HeelInfo.Color)</span>
+
+            <span class="preview-label">Size & Valuation</span>
+            <span class="preview-value">EU @Html.DisplayFor(model => model.HeelInfo.Size) — $@Html.DisplayFor(model => model.HeelInfo.Price)</span>
+        </div>
+
         <form method="post">
             <input type="hidden" asp-for="HeelInfo.VariantId" />
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <a asp-page="./Index">Back to List</a>
+            <button type="submit" class="btn-delete-lux">Confirm Deletion</button>
         </form>
+
+        <a asp-page="./Index" class="cancel-link">Cancel and Return</a>
     </div>
 </div>
