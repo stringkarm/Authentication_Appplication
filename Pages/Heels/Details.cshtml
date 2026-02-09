@@ -2,40 +2,158 @@
 @model Authentication_Appplication.Pages.Heels.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Collection Details | ÉLÉGANCE";
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
+<style>
+    .details-wrapper {
+        padding: 80px 60px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
 
-    <h1>Details</h1>
+    .details-card {
+        background: white;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+    }
 
-    <div>
-        <h4>Heel</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Heel.Name)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Heel.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Heel.Description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Heel.Description)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Heel.Brand)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Heel.Brand)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-page="./Edit" asp-route-id="@Model.Heel.HeelId">Edit</a> |
-        <a asp-page="./Index">Back to List</a>
+    .details-label-side {
+        background-color: #000;
+        color: #fff;
+        padding: 60px;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .details-label-side h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+    .brand-tag {
+        font-size: 10px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #c9a050;
+        font-weight: 700;
+    }
+
+    .details-content-side {
+        padding: 60px;
+        width: 65%;
+        background: #fff;
+    }
+
+    .spec-item {
+        margin-bottom: 35px;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 20px;
+    }
+
+    .spec-label {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .spec-value {
+        font-size: 20px;
+        color: #000;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+    }
+
+    .spec-description {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 15px;
+        line-height: 1.8;
+        color: #555;
+        font-style: italic;
+    }
+
+    .btn-edit-lux {
+        background-color: #000;
+        color: #fff;
+        padding: 18px 40px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+        .btn-edit-lux:hover {
+            background-color: #c9a050;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+    .back-nav {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #888;
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 20px;
+    }
+
+        .back-nav:hover {
+            color: #000;
+        }
+</style>
+
+<div class="details-wrapper">
+    <div class="details-card">
+        <div class="details-label-side">
+            <div>
+                <span class="brand-tag">ÉLÉGANCE</span>
+                <h2>Design<br />Manifesto</h2>
+            </div>
+            <p style="font-size: 10px; opacity: 0.6; line-height: 2; text-transform: uppercase; letter-spacing: 1px;">
+                Archived Collection<br />
+                ID: REF-00@Model.Heel.HeelId
+            </p>
+        </div>
+
+        <div class="details-content-side">
+            <div class="spec-item">
+                <span class="spec-label">Heel Name</span>
+                <span class="spec-value">@Html.DisplayFor(model => model.Heel.Name)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label">Brand</span>
+                <span class="spec-value" style="color: #c9a050;">@Html.DisplayFor(model => model.Heel.Brand)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label">Description</span>
+                <p class="spec-description">"@Html.DisplayFor(model => model.Heel.Description)"</p>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <a asp-page="./Edit" asp-route-id="@Model.Heel.HeelId" class="btn-edit-lux">Update Design</a>
+                <a asp-page="./Index" class="back-nav">Back to Archive</a>
+            </div>
+        </div>
     </div>
 </div>

@@ -2,51 +2,170 @@
 @model Authentication_Appplication.Pages.Heels.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Refine Collection | ÉLÉGANCE";
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-
-    <h1>Edit</h1>
-
-    <h4>Heel</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Heel.HeelId" />
-                <div class="form-group">
-    <span class="text-danger">*</span>
-                    <label asp-for="Heel.Name" class="control-label"></label>
-                    <input asp-for="Heel.Name" class="form-control" aria-required="true"/>
-                    <span asp-validation-for="Heel.Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-    <span class="text-danger">*</span>
-                    <label asp-for="Heel.Description" class="control-label"></label>
-                    <textarea asp-for="Heel.Description" class="form-control" aria-required="true"></textarea>
-                    <span asp-validation-for="Heel.Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-    <span class="text-danger">*</span>
-                    <label asp-for="Heel.Brand" class="control-label"></label>
-                    <input asp-for="Heel.Brand" class="form-control" aria-required="true"/>
-                    <span asp-validation-for="Heel.Brand" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div>
-        <a asp-page="./Index">Back to List</a>
-    </div>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<style>
+    .edit-wrapper {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
+    .edit-card {
+        background: white;
+        width: 100%;
+        max-width: 550px;
+        padding: 50px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+    }
+
+
+    .edit-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+        .edit-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .edit-header p {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    .form-group-lux {
+        margin-bottom: 30px;
+    }
+
+    .control-label-lux {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        display: block;
+        color: #333;
+    }
+
+    .form-control-lux {
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        font-size: 14px;
+        transition: border-color 0.3s;
+        outline: none;
+        background: transparent;
+    }
+
+        .form-control-lux:focus {
+            border-bottom: 1px solid #c9a050;
+        }
+
+    textarea.form-control-lux {
+        min-height: 100px;
+        border: 1px solid #eee; 
+        padding: 10px;
+        margin-top: 5px;
+    }
+
+        textarea.form-control-lux:focus {
+            border: 1px solid #c9a050;
+        }
+
+    .btn-save-lux {
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        padding: 20px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+        .btn-save-lux:hover {
+            background-color: #c9a050;
+            transform: translateY(-2px);
+        }
+
+    .back-link {
+        margin-top: 30px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+        .back-link:hover {
+            color: #000;
+        }
+
+    .required-star {
+        color: #c9a050;
+        margin-left: 3px;
+    }
+</style>
+
+<div class="edit-wrapper">
+    <div class="edit-header">
+        <h1>Edit <span style="color:#c9a050">Collection</span></h1>
+        <p>Refining Design Philosophy & Identity</p>
+    </div>
+
+    <div class="edit-card">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" style="font-size: 12px; margin-bottom: 20px;"></div>
+            <input type="hidden" asp-for="Heel.HeelId" />
+
+            <div class="form-group-lux">
+                <label asp-for="Heel.Name" class="control-label-lux">Heel Name<span class="required-star">*</span></label>
+                <input asp-for="Heel.Name" class="form-control-lux" />
+                <span asp-validation-for="Heel.Name" class="text-danger" style="font-size: 11px;"></span>
+            </div>
+
+            <div class="form-group-lux">
+                <label asp-for="Heel.Brand" class="control-label-lux">Brand<span class="required-star">*</span></label>
+                <input asp-for="Heel.Brand" class="form-control-lux" />
+                <span asp-validation-for="Heel.Brand" class="text-danger" style="font-size: 11px;"></span>
+            </div>
+
+            <div class="form-group-lux">
+                <label asp-for="Heel.Description" class="control-label-lux">Description<span class="required-star">*</span></label>
+                <textarea asp-for="Heel.Description" class="form-control-lux" placeholder="Describe the silhouette and inspiration..."></textarea>
+                <span asp-validation-for="Heel.Description" class="text-danger" style="font-size: 11px;"></span>
+            </div>
+
+            <button type="submit" class="btn-save-lux">Update Collection</button>
+        </form>
+    </div>
+
+    <a asp-page="./Index" class="back-link">← Return to Archive</a>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
