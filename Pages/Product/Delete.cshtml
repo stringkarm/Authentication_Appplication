@@ -143,11 +143,11 @@
         <p>Once deleted, this specific heel will no longer be available in the public store or inventory.</p>
 
         <div class="item-preview">
-            <span class="preview-label">Shade & Style</span>
+            <span class="preview-label">COLOR</span>
             <span class="preview-value">@Html.DisplayFor(model => model.HeelInfo.Color)</span>
 
-            <span class="preview-label">Size & Valuation</span>
-            <span class="preview-value">EU @Html.DisplayFor(model => model.HeelInfo.Size) — $@Html.DisplayFor(model => model.HeelInfo.Price)</span>
+            <span class="preview-label">SIZE AND PRICE</span>
+            <span class="preview-value">SZ @Html.DisplayFor(model => model.HeelInfo.Size) — @Html.DisplayFor(model => model.HeelInfo.Price)</span>
         </div>
 
         <form method="post">
