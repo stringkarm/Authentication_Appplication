@@ -1,0 +1,153 @@
+﻿@page
+@model Authentication_Appplication.Pages.Register.EditModel
+
+@{
+    ViewData["Title"] = "Edit | ÉLÉGANCE";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    .edit-wrapper {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .edit-card {
+        background: white;
+        width: 100%;
+        max-width: 500px;
+        padding: 50px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+    }
+
+    .edit-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+        .edit-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .edit-header p {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    .form-group-lux {
+        margin-bottom: 30px;
+    }
+
+    .control-label-lux {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        display: block;
+        color: #333;
+    }
+
+    .form-control-lux {
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        font-size: 14px;
+        transition: border-color 0.3s;
+        outline: none;
+        background: transparent;
+    }
+
+        .form-control-lux:focus {
+            border-bottom: 1px solid #c9a050;
+        }
+
+    .btn-save-lux {
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        padding: 20px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+        .btn-save-lux:hover {
+            background-color: #c9a050;
+            transform: translateY(-2px);
+        }
+
+    .back-link {
+        margin-top: 30px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+        .back-link:hover {
+            color: #000;
+        }
+
+    .required-star {
+        color: #c9a050;
+        margin-left: 3px;
+    }
+</style>
+
+<div class="edit-wrapper">
+    <div class="edit-header">
+        <h1>EDIT <span style="color:#c9a050">USER</span></h1>
+        <p>Modifying Personnel Access Credentials</p>
+    </div>
+
+    <div class="edit-card">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" style="font-size: 12px; margin-bottom: 20px;"></div>
+            <input type="hidden" asp-for="Users.Id" />
+
+            <div class="form-group-lux">
+                <label asp-for="Users.Username" class="control-label-lux">Username<span class="required-star">*</span></label>
+                <input asp-for="Users.Username" class="form-control-lux" autocomplete="off" />
+                <span asp-validation-for="Users.Username" class="text-danger" style="font-size: 11px;"></span>
+            </div>
+
+            <div class="form-group-lux">
+                <label asp-for="Users.Password" class="control-label-lux">Security Key / Password<span class="required-star">*</span></label>
+                <input type="text" asp-for="Users.Password" value="@Model.Users.Password" class="form-control-lux" autocomplete="off" />
+                <span asp-validation-for="Users.Password" class="text-danger" style="font-size: 11px;"></span>
+            </div>
+
+            <button type="submit" class="btn-save-lux">Save Changes</button>
+        </form>
+    </div>
+
+    <a asp-page="./Index" class="back-link">← Return to Registry</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

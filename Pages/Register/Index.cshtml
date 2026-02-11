@@ -1,8 +1,8 @@
 ﻿@page
-@model Authentication_Appplication.Pages.Heels.IndexModel
+@model Authentication_Appplication.Pages.Register.IndexModel
 
 @{
-    ViewData["Title"] = "Collections | ÉLÉGANCE";
+    ViewData["Title"] = "Register | ÉLÉGANCE";
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
@@ -18,7 +18,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 50px;
-        border-bottom: 2px solid var(--black);
+        border-bottom: 2px solid #000;
         padding-bottom: 25px;
     }
 
@@ -45,7 +45,7 @@
     }
 
         .btn-add-new:hover {
-            background-color: var(--gold);
+            background-color: #c9a050;
             color: #000;
             transform: translateY(-2px);
         }
@@ -63,11 +63,11 @@
     }
 
         .table-lux-vault thead {
-            background-color: var(--black);
+            background-color: #000;
         }
 
             .table-lux-vault thead th {
-                color: var(--gold);
+                color: #c9a050; 
                 text-transform: uppercase;
                 font-size: 11px;
                 letter-spacing: 2px;
@@ -92,21 +92,27 @@
             font-family: 'Segoe UI', sans-serif;
         }
 
-    .cell-name {
-        font-family: 'Playfair Display', serif;
+    .user-identity {
         font-weight: 700;
-        font-size: 18px;
-        text-transform: uppercase;
         letter-spacing: 1px;
         color: #000;
+        font-size: 15px;
     }
 
-    .brand-badge {
-        font-size: 10px;
+    .password-mask {
+        color: #ccc;
+        font-family: 'Courier New', monospace;
+        letter-spacing: 2px;
+    }
+
+    .role-badge {
+        font-size: 9px;
         font-weight: 800;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: var(--gold);
+        color: #c9a050;
+        border: 1px solid #c9a050;
+        padding: 4px 10px;
     }
 
     .actions-group {
@@ -126,7 +132,7 @@
     }
 
         .action-btn:hover {
-            color: var(--gold);
+            color: #c9a050;
         }
 
     .action-delete:hover {
@@ -137,39 +143,37 @@
 <div class="inventory-wrapper">
     <div class="inventory-header">
         <div>
-            <h1>Heels <span style="color:var(--gold)">Collection</span></h1>
+            <h1>User <span style="color:#c9a050">Registr</span></h1>
             <p style="font-size:12px; color:#888; margin-top:10px; text-transform:uppercase; letter-spacing:2px;">
-                Curating Elite Footwear Collections
+                Authorized Members & Administrators
             </p>
         </div>
-        <a asp-page="Create" class="btn-add-new">Add Collection</a>
+        <a asp-page="Create" class="btn-add-new">Register New User</a>
     </div>
 
     <div class="vault-container">
         <table class="table-lux-vault">
             <thead>
                 <tr>
-                    <th>HEEL NAME</th>
-                    <th>DESCRIPTION</th>
-                    <th>BRAND</th>
+                    <th>USERNAME</th>
+                    <th>PASSWORD</th>
                     <th style="text-align:right;">MODIFY</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Heel)
+                @foreach (var item in Model.Users)
                 {
                     <tr>
-                        <td class="cell-name">@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td style="font-style: italic; color: #666; max-width: 300px;">
-                            @Html.DisplayFor(modelItem => item.Description)
+                        <td class="user-identity">
+                            @Html.DisplayFor(modelItem => item.Username)
                         </td>
                         <td>
-                            <span class="brand-badge">@Html.DisplayFor(modelItem => item.Brand)</span>
+                            <code class="password-display">@Html.DisplayFor(modelItem => item.Password)</code>
                         </td>
                         <td class="actions-group">
-                            <a asp-page="./Edit" asp-route-id="@item.HeelId" class="action-btn">Edit</a>
-                            <a asp-page="./Details" asp-route-id="@item.HeelId" class="action-btn">View</a>
-                            <a asp-page="./Delete" asp-route-id="@item.HeelId" class="action-btn action-delete">Archive</a>
+                            <a asp-page="./Edit" asp-route-id="@item.Id" class="action-btn">Edit</a>
+                            <a asp-page="./Details" asp-route-id="@item.Id" class="action-btn">View</a>
+                            <a asp-page="./Delete" asp-route-id="@item.Id" class="action-btn action-delete">Delete</a>
                         </td>
                     </tr>
                 }

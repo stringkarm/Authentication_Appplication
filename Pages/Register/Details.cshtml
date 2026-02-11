@@ -1,0 +1,158 @@
+﻿@page
+@model Authentication_Appplication.Pages.Register.DetailsModel
+
+@{
+    ViewData["Title"] = "User Details | ÉLÉGANCE";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    .details-wrapper {
+        padding: 80px 60px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .details-card {
+        background: white;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+    }
+
+    .details-label-side {
+        background-color: #000;
+        color: #fff;
+        padding: 60px;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .details-label-side h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+    .brand-tag {
+        font-size: 10px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #c9a050; 
+        font-weight: 700;
+    }
+
+    .details-content-side {
+        padding: 60px;
+        width: 65%;
+        background: #fff;
+    }
+
+    .spec-item {
+        margin-bottom: 35px;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 20px;
+    }
+
+    .spec-label {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .spec-value {
+        font-size: 20px;
+        color: #000;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+    }
+
+    .password-value {
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 18px;
+        color: #c9a050;
+        letter-spacing: 1px;
+        background: #fafafa;
+        padding: 5px 12px;
+        border: 1px solid #eee;
+    }
+
+    .btn-edit-lux {
+        background-color: #000;
+        color: #fff;
+        padding: 18px 40px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+        .btn-edit-lux:hover {
+            background-color: #c9a050;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+    .back-nav {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #888;
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 20px;
+    }
+
+        .back-nav:hover {
+            color: #000;
+        }
+</style>
+
+<div class="details-wrapper">
+    <div class="details-card">
+        <div class="details-label-side">
+            <div>
+                <span class="brand-tag">ÉLÉGANCE</span>
+                <h2>User<br />Details</h2>
+            </div>
+            <p style="font-size: 10px; opacity: 0.6; line-height: 2; text-transform: uppercase; letter-spacing: 1px;"></p>
+        </div>
+
+        <div class="details-content-side">
+            <div class="spec-item">
+                <span class="spec-label">Username</span>
+                <span class="spec-value">@Html.DisplayFor(model => model.Users.Username)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label">Password</span>
+                <span class="password-value">@Html.DisplayFor(model => model.Users.Password)</span>
+            </div>
+
+            <div class="spec-item">
+                <span class="spec-label">Account Status</span>
+                <span class="spec-value" style="font-size: 14px; color: #c9a050;">Active User</span>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <a asp-page="./Edit" asp-route-id="@Model.Users.Id" class="btn-edit-lux">Update User</a>
+                <a asp-page="./Index" class="back-nav">Back to Registr Page</a>
+            </div>
+        </div>
+    </div>
+</div>

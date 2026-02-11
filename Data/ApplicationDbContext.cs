@@ -12,5 +12,6 @@ namespace Authentication_Appplication.Data
         }
         public DbSet<Authentication_Appplication.Model.HeelInfo> HeelInfo { get; set; } = default!;
         public DbSet<Authentication_Appplication.Model.Heel> Heel { get; set; } = default!;
+        public DbSet<Authentication_Appplication.Model.Users> Users { get; set; } = default!;
     }
 }

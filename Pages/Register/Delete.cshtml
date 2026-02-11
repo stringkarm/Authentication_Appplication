@@ -1,0 +1,163 @@
+﻿@page
+@model Authentication_Appplication.Pages.Register.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete User | ÉLÉGANCE";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    .delete-wrapper {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .delete-header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+        .delete-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+    .warning-text {
+        color: #d9534f;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 15px;
+        display: block;
+    }
+
+    .delete-card {
+        background: white;
+        width: 100%;
+        max-width: 600px;
+        padding: 60px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+        text-align: center;
+    }
+
+        .delete-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .delete-card p {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+    .item-preview {
+        background-color: #fafafa;
+        padding: 30px;
+        margin-bottom: 40px;
+        border: 1px dashed #ddd;
+    }
+
+    .preview-label {
+        font-size: 10px;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .preview-value {
+        font-family: 'Playfair Display', serif;
+        font-size: 22px;
+        color: #000;
+        margin-bottom: 15px;
+        display: block;
+        font-weight: 700;
+    }
+
+    .preview-password {
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #c9a050;
+    }
+
+    .btn-delete-lux {
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        padding: 20px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 25px;
+    }
+
+        .btn-delete-lux:hover {
+            background-color: #d9534f;
+            transform: translateY(-2px);
+        }
+
+    .cancel-link {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: inline-block;
+    }
+
+        .cancel-link:hover {
+            color: #000;
+        }
+</style>
+
+<div class="delete-wrapper">
+    <div class="delete-header">
+        <h1>Delete <span style="color:#c9a050">User</span></h1>
+        <span class="warning-text">Permanent Security Action</span>
+    </div>
+
+    <div class="delete-card">
+        <h3>Remove this user?</h3>
+        <p>You are about to de-register this user from the ÉLÉGANCE. All permissions will be voided immediately.</p>
+
+        <div class="item-preview">
+            <span class="preview-label">Username</span>
+            <span class="preview-value">@Html.DisplayFor(model => model.Users.Username)</span>
+
+            <span class="preview-label">Password</span>
+            <span class="preview-password">@Html.DisplayFor(model => model.Users.Password)</span>
+        </div>
+
+        <form method="post">
+            <input type="hidden" asp-for="Users.Id" />
+            <button type="submit" class="btn-delete-lux">Confirm Delete</button>
+        </form>
+
+        <a asp-page="./Index" class="cancel-link">Cancel and Return</a>
+    </div>
+</div>
